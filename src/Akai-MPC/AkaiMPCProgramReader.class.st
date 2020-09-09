@@ -1,3 +1,12 @@
+"
+I am a reader of AKAI MPC .PRG files
+
+At the moment I am able to read MPC-2000 format PRG files.
+
+Example:
+
+(AkaiMPCProgramReader on: '/path/to/FILE.PRG' asFileReference binaryReadStream) next inspect.
+"
 Class {
 	#name : #AkaiMPCProgramReader,
 	#superclass : #Object,
@@ -44,12 +53,12 @@ AkaiMPCProgramReader >> next [
 	^ inst
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #reading }
 AkaiMPCProgramReader >> readNumberOfSamples [
 	^ stream nextLittleEndianNumber: 2
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #reading }
 AkaiMPCProgramReader >> readPrefix [
 	#( 7 4 ) do: [ :i | 
 		(stream nextLittleEndianNumber: 1) = i ifFalse: [ 
@@ -66,7 +75,7 @@ AkaiMPCProgramReader >> readString: size [
 	^ (stream next: size) asString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #reading }
 AkaiMPCProgramReader >> term [
 	(stream nextLittleEndianNumber: 1) = 0 ifFalse: [ 
 		self error: 'Expected 0 (term)' ]
