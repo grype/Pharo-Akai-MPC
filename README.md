@@ -15,3 +15,7 @@ Metacello new
 ```smalltalk
 (AkaiMPCProgramReader on: '/path/to/FILE.PRG' asFileReference binaryReadStream) next inspect.
 ```
+
+## References
+
+* [AKAI MPC File Format](http://mda.smartelectronix.com/akai/akaiinfo.htm)
